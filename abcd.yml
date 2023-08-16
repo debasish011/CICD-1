@@ -1,0 +1,19 @@
+---
+- name: Install and configure Apache
+  hosts: web
+  tasks:
+    - name: Install Apache
+      apt:
+        name: apache2  # Use 'apache2' for Apache on most Linux distributions
+        state: latest
+
+    - name: Start Apache service
+      service:
+        name: apache2
+        state: started
+
+    - name: Copy index.html
+      copy:
+        src: /opt/index.html
+        dest: /var/www/html/index.html
+...
